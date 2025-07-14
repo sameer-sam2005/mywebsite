@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apnaadesign | Design That Speaks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#0066FF', secondary: '#000000' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+    
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+    
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'SF Pro Display', sans-serif;
+        }
+    
+        .hero-section {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    
+        .nav-link {
+            position: relative;
+        }
+    
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #0066FF;
+            transition: width 0.3s ease;
+        }
+    
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+    
+        .service-card:hover .service-icon {
+            color: #0066FF;
+            transform: scale(1.1);
+        }
+    
+        .work-item:hover .work-overlay {
+            opacity: 1;
+        }
+    
+        .work-item:hover img {
+            transform: scale(1.05);
+        }
+    
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+    
+        @keyframes bounce {
+    
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+    
+            40% {
+                transform: translateY(-20px);
+            }
+    
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    
+        input:focus+label,
+        textarea:focus+label,
+        input:not(:placeholder-shown)+label,
+        textarea:not(:placeholder-shown)+label {
+            transform: translateY(-20px) scale(0.8);
+            color: #0066FF;
+        }
+    
+        .floating-label {
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+    
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        .review-slide {
+            transition: opacity 0.5s ease;
+        }
+    
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0066FF;
+            cursor: pointer;
+        }
+        .logo-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 3px white;
+  background-color: white;
+}
+.logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="block w-14 h-14 overflow-hidden rounded-full bg-white shadow-md ring-2 ring-white">
+                <img src="aapna-logo.jpg" alt="Apna Design Logo" class="w-full h-full object-cover">
+            </a>
+              
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="nav-link text-sm font-medium hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="nav-link text-sm font-medium hover:text-primary transition-colors">About</a>
+                <a href="#work" class="nav-link text-sm font-medium hover:text-primary transition-colors">Work</a>
+                <a href="#services" class="nav-link text-sm font-medium hover:text-primary transition-colors">Services</a>
+                <a href="#reviews" class="nav-link text-sm font-medium hover:text-primary transition-colors">Reviews</a>
+                <a href="#contact"
+                    class="ml-4 px-6 py-2 bg-primary text-white font-medium transition-all duration-300 hover:bg-opacity-90 !rounded-button whitespace-nowrap">Contact
+                    Us</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden w-10 h-10 flex items-center justify-center text-black">
+                <i class="ri-menu-line ri-2x"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-6">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-sm font-medium hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="text-sm font-medium hover:text-primary transition-colors">About</a>
+                <a href="#work" class="text-sm font-medium hover:text-primary transition-colors">Work</a>
+                <a href="#services" class="text-sm font-medium hover:text-primary transition-colors">Services</a>
+                <a href="#reviews" class="text-sm font-medium hover:text-primary transition-colors">Reviews</a>
+                <a href="#contact"
+                    class="px-6 py-2 bg-primary text-white font-medium text-center transition-all duration-300 hover:bg-opacity-90 !rounded-button whitespace-nowrap">Contact
+                    Us</a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section min-h-screen flex items-center justify-center relative"
+        style="background-image: url('https://readdy.ai/api/search-image?query=A%20minimalist%20and%20elegant%20design%20background%20with%20a%20gradient%20from%20white%20to%20light%20blue%20on%20the%20left%20side%2C%20transitioning%20to%20a%20more%20vibrant%20electric%20blue%20on%20the%20right%20side.%20The%20right%20side%20should%20feature%20abstract%20geometric%20shapes%20and%20subtle%20design%20elements%20that%20represent%20creativity%20and%20graphic%20design%2C%20while%20the%20left%20side%20remains%20clean%20and%20empty%20for%20text%20placement.%20The%20transition%20between%20the%20two%20sides%20must%20be%20smooth%20and%20natural.&width=1920&height=1080&seq=hero1&orientation=landscape');">
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div class="container mx-auto px-6 z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 opacity-0 transition-opacity duration-1000"
+                    id="hero-title">Design That Speaks</h1>
+                <p class="text-xl md:text-2xl text-white mb-10 opacity-0 transition-opacity duration-1000 delay-300"
+                    id="hero-subtitle">We create visual identities that communicate your brand's story with clarity and
+                    impact</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 opacity-0 transition-opacity duration-1000 delay-600"
+                    id="hero-cta">
+                    <a href="#work"
+                        class="px-8 py-3 bg-primary text-white font-medium transition-all duration-300 hover:bg-opacity-90 !rounded-button whitespace-nowrap">View
+                        Our Work</a>
+                    <a href="#contact"
+                        class="px-8 py-3 bg-white text-black font-medium transition-all duration-300 hover:bg-opacity-90 !rounded-button whitespace-nowrap">Get
+                        in Touch</a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <div class="w-8 h-12 border-2 border-white rounded-full flex justify-center">
+                <div class="w-2 h-2 bg-white rounded-full mt-2"></div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">About Us</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">Design isn’t just how it looks — it’s how it connects.</p>
+            </div>
+            <div class="max-w-4xl mx-auto text-gray-700 text-lg space-y-6">
+                <p>At Apna Design, we believe that every brand, no matter how big or small, deserves a visual identity that speaks with clarity, creativity, and confidence. We’re a young, passionate, and driven creative studio that’s helping startups, creators, educators, and small business owners shape their presence through design that actually works.</p>
+                <p>We started Apna Design with a simple idea:
+                👉 Design should be affordable, fast, and effective — without compromising quality. And that’s exactly what we deliver.</p>
+                <p>Whether it’s a logo that tells your brand story, an Instagram post that grabs attention, or a reel that your audience wants to share — our designs are made to engage, attract, and grow.</p>
+                <p>We work across a wide range of services — 🎨 Posters, Logos, Reels, Menus, Packaging, Carousels, Branding Kits and more. Our approach is not “just make it pretty,” but “make it work for your goal.”</p>
+                <p>We don’t believe in copy-paste design. Every client we work with is different, and so are the visuals we create. We listen first, design next — and always aim to bring ideas to life in the most honest, relatable, and clean way possible.</p>
+                <p>Our team is built on creativity, collaboration, and a never-settle attitude. We're not here just to complete orders — we're here to build visual partnerships that grow over time.  So whether you're launching a new brand, running an online page, or just want your visuals to match your value — Apna Design is here to make sure your brand doesn’t just exist, it stands out.</p>
+                <p>Let’s create something powerful.<br>
+                Let’s design with purpose.<br>
+                Let’s make it Apna.</p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4">
+                            <i class="ri-focus-3-line text-primary"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Precision</h4>
+                            <p class="text-gray-600 text-sm">We pay attention to every pixel and detail</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4">
+                            <i class="ri-lightbulb-line text-primary"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Innovation</h4>
+                            <p class="text-gray-600 text-sm">We push boundaries and explore new ideas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4">
+                            <i class="ri-heart-line text-primary"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Passion</h4>
+                            <p class="text-gray-600 text-sm">We love what we do and it shows in our work</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4">
+                            <i class="ri-user-voice-line text-primary"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Collaboration</h4>
+                            <p class="text-gray-600 text-sm">We work closely with our clients as partners</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section id="work" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Our Work</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">Explore our portfolio of creative projects spanning various
+                    industries and design disciplines.</p>
+            </div>
+            <div class="mb-10 flex justify-center">
+                <div class="inline-flex bg-gray-100 p-1 rounded-full">
+                    <button
+                        class="work-filter-btn px-4 py-2 rounded-full bg-primary text-white !rounded-button whitespace-nowrap">All</button>
+                    <button
+                        class="work-filter-btn px-4 py-2 rounded-full text-gray-700 hover:text-primary !rounded-button whitespace-nowrap">Branding</button>
+                    <button
+                        class="work-filter-btn px-4 py-2 rounded-full text-gray-700 hover:text-primary !rounded-button whitespace-nowrap">Print</button>
+                    <button
+                        class="work-filter-btn px-4 py-2 rounded-full text-gray-700 hover:text-primary !rounded-button whitespace-nowrap">Digital</button>
+                    <button
+                        class="work-filter-btn px-4 py-2 rounded-full text-gray-700 hover:text-primary !rounded-button whitespace-nowrap">Content</button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Work Item 1 -->
+                <div class="work-item group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20professional%20and%20modern%20brand%20identity%20design%20for%20a%20luxury%20coffee%20brand.%20The%20image%20should%20show%20various%20branding%20elements%20like%20logo%2C%20business%20cards%2C%20packaging%2C%20and%20signage%20mockups%20arranged%20in%20a%20clean%2C%20organized%20composition.%20The%20design%20should%20feature%20elegant%20typography%20and%20a%20sophisticated%20color%20palette%20with%20dark%20tones%20and%20gold%20accents.%20The%20presentation%20should%20be%20on%20a%20clean%20background%20with%20professional%20lighting%20to%20highlight%20the%20premium%20quality%20of%20the%20design%20work.&width=600&height=500&seq=work1&orientation=landscape"
+                        alt="Luxury Coffee Brand Identity"
+                        class="w-full h-80 object-cover object-top transition-transform duration-500">
+                    <div
+                        class="work-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white mb-2">Elegance Coffee Co.</h3>
+                        <p class="text-white text-center mb-4">Complete brand identity for a premium coffee brand</p>
+                        <span class="px-4 py-1 bg-white text-primary text-sm font-medium rounded-full">Branding</span>
+                    </div>
+                </div>
+                <!-- Work Item 2 -->
+                <div class="work-item group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20series%20of%20creative%20event%20posters%20with%20modern%20typography%20and%20abstract%20geometric%20elements.%20The%20posters%20should%20showcase%20different%20design%20styles%20but%20maintain%20a%20cohesive%20look%20with%20bold%20colors%20and%20clean%20layouts.%20The%20designs%20should%20be%20displayed%20in%20a%20professional%20presentation%20format%20showing%20the%20posters%20in%20realistic%20mockups%20on%20clean%20walls%20or%20gallery%20settings.%20The%20composition%20should%20emphasize%20the%20artistic%20and%20creative%20aspects%20of%20poster%20design.&width=600&height=500&seq=work2&orientation=landscape"
+                        alt="Event Poster Designs"
+                        class="w-full h-80 object-cover object-top transition-transform duration-500">
+                    <div
+                        class="work-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white mb-2">Creative Posters</h3>
+                        <p class="text-white text-center mb-4">Event and promotional poster designs</p>
+                        <span class="px-4 py-1 bg-white text-primary text-sm font-medium rounded-full">Print</span>
+                    </div>
+                </div>
+                <!-- Work Item 3 -->
+                <div class="work-item group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20modern%20and%20visually%20striking%20website%20design%20for%20a%20digital%20agency%20displayed%20on%20multiple%20devices%20%28desktop%2C%20tablet%2C%20and%20mobile%29.%20The%20website%20should%20feature%20a%20dark%20interface%20with%20electric%20blue%20accents%2C%20bold%20typography%2C%20and%20minimalist%20layout.%20The%20screens%20should%20show%20different%20sections%20of%20the%20website%20including%20homepage%2C%20portfolio%2C%20and%20contact%20page.%20The%20devices%20should%20be%20arranged%20in%20a%20professional%20composition%20with%20subtle%20shadows%20on%20a%20light%20background.&width=600&height=500&seq=work3&orientation=landscape"
+                        alt="Digital Agency Website"
+                        class="w-full h-80 object-cover object-top transition-transform duration-500">
+                    <div
+                        class="work-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white mb-2">Nexus Digital</h3>
+                        <p class="text-white text-center mb-4">Responsive website design with interactive elements</p>
+                        <span class="px-4 py-1 bg-white text-primary text-sm font-medium rounded-full">Digital</span>
+                    </div>
+                </div>
+                <!-- Work Item 4 -->
+                <div class="work-item group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20series%20of%20social%20media%20designs%20for%20a%20fashion%20brand.%20The%20image%20should%20show%20multiple%20Instagram%20posts%20and%20stories%20with%20a%20cohesive%20visual%20style%20featuring%20fashion%20photography%2C%20typography%2C%20and%20graphic%20elements.%20The%20designs%20should%20have%20a%20modern%2C%20trendy%20aesthetic%20with%20a%20consistent%20color%20palette.%20The%20posts%20should%20be%20arranged%20in%20a%20grid%20layout%20similar%20to%20how%20they%20would%20appear%20on%20an%20Instagram%20profile%2C%20showing%20the%20overall%20visual%20strategy%20and%20brand%20consistency.&width=600&height=500&seq=work4&orientation=landscape"
+                        alt="Fashion Social Media Campaign"
+                        class="w-full h-80 object-cover object-top transition-transform duration-500">
+                    <div
+                        class="work-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white mb-2">Vogue Collective</h3>
+                        <p class="text-white text-center mb-4">Social media campaign for seasonal collection</p>
+                        <span class="px-4 py-1 bg-white text-primary text-sm font-medium rounded-full">Digital</span>
+                    </div>
+                </div>
+                <!-- Work Item 5 -->
+                <div class="work-item group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20collection%20of%20modern%20YouTube%20thumbnails%20and%20social%20media%20graphics%20displayed%20in%20a%20grid%20layout.%20The%20designs%20should%20feature%20eye-catching%20compositions%20with%20bold%20typography%2C%20vibrant%20colors%2C%20and%20professional%20photo%20editing.%20The%20thumbnails%20should%20demonstrate%20various%20content%20categories%20like%20tech%20reviews%2C%20lifestyle%2C%20and%20educational%20content.%20The%20presentation%20should%20show%20how%20the%20thumbnails%20look%20both%20individually%20and%20as%20a%20cohesive%20channel%20brand.&width=600&height=500&seq=work5&orientation=landscape"
+                        alt="Content Thumbnails"
+                        class="w-full h-80 object-cover object-top transition-transform duration-500">
+                    <div
+                        class="work-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white mb-2">Content Creation</h3>
+                        <p class="text-white text-center mb-4">YouTube thumbnails and social graphics</p>
+                        <span class="px-4 py-1 bg-white text-primary text-sm font-medium rounded-full">Content</span>
+                    </div>
+                </div>
+                <!-- Work Item 6 -->
+                <div class="work-item group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://readdy.ai/api/search-image?query=A%20collection%20of%20logo%20designs%20for%20various%20clients%20displayed%20in%20a%20professional%20presentation%20format.%20The%20image%20should%20show%206-8%20different%20logos%20with%20different%20styles%20%28wordmarks%2C%20symbols%2C%20combination%20marks%29%20applied%20to%20mockups%20like%20business%20cards%2C%20signage%2C%20and%20merchandise.%20The%20logos%20should%20demonstrate%20versatility%20in%20design%20approaches%20while%20maintaining%20high%20quality%20and%20professional%20execution.%20The%20presentation%20should%20be%20clean%20and%20organized%20on%20a%20neutral%20background.&width=600&height=500&seq=work6&orientation=landscape"
+                        alt="Logo Collection" class="w-full h-80 object-cover object-top transition-transform duration-500">
+                    <div
+                        class="work-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6 opacity-0 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white mb-2">Logo Portfolio</h3>
+                        <p class="text-white text-center mb-4">Collection of distinctive brand marks</p>
+                        <span class="px-4 py-1 bg-white text-primary text-sm font-medium rounded-full">Branding</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#contact"
+                    class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium transition-all duration-300 hover:bg-opacity-90 !rounded-button whitespace-nowrap">
+                    <span>Start Your Project</span>
+                    <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">We offer comprehensive design solutions tailored to your
+                    unique needs and goals.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl">
+                    <div
+                        class="service-icon w-16 h-16 flex items-center justify-center bg-gray-100 rounded-full mb-6 transition-all duration-300">
+                        <i class="ri-pen-nib-line ri-xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Logo Design</h3>
+                    <p class="text-gray-600 mb-6">We create distinctive, memorable logos that capture your brand's
+                        essence and stand the test of time.</p>
+                    <ul class="text-sm text-gray-700 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Custom logo creation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Multiple concept options</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Logo variations and guidelines</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary font-medium hover:underline">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl">
+                    <div
+                        class="service-icon w-16 h-16 flex items-center justify-center bg-gray-100 rounded-full mb-6 transition-all duration-300">
+                        <i class="ri-layout-4-line ri-xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Brand Identity</h3>
+                    <p class="text-gray-600 mb-6">We develop comprehensive brand systems that communicate your values
+                        and connect with your audience.</p>
+                    <ul class="text-sm text-gray-700 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Visual identity systems</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Brand guidelines</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Stationery and collateral</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary font-medium hover:underline">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl">
+                    <div
+                        class="service-icon w-16 h-16 flex items-center justify-center bg-gray-100 rounded-full mb-6 transition-all duration-300">
+                        <i class="ri-instagram-line ri-xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Social Media</h3>
+                    <p class="text-gray-600 mb-6">We design engaging social media content that builds your brand
+                        presence and drives engagement.</p>
+                    <ul class="text-sm text-gray-700 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Content creation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Feed design and templates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Story and reel graphics</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary font-medium hover:underline">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl">
+                    <div
+                        class="service-icon w-16 h-16 flex items-center justify-center bg-gray-100 rounded-full mb-6 transition-all duration-300">
+                        <i class="ri-artboard-line ri-xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Print Design</h3>
+                    <p class="text-gray-600 mb-6">We design impactful print materials that make a lasting impression in
+                        the physical world.</p>
+                    <ul class="text-sm text-gray-700 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Posters and flyers</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Brochures and catalogs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Packaging and labels</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary font-medium hover:underline">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-lg transition-all duration-500 hover:shadow-xl">
+                    <div
+                        class="service-icon w-16 h-16 flex items-center justify-center bg-gray-100 rounded-full mb-6 transition-all duration-300">
+                        <i class="ri-window-line ri-xl text-gray-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Web Design</h3>
+                    <p class="text-gray-600 mb-6">We design beautiful, functional websites that provide exceptional user
+                        experiences.</p>
+                    <ul class="text-sm text-gray-700 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>UI/UX design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Responsive layouts</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Interactive prototypes</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary font-medium hover:underline">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Client Reviews</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">Hear what our clients have to say about working with us.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="mb-4 text-primary">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"I had been struggling to find a logo that truly matched the soul of my brand — until I found Apna Design. They took my raw idea and turned it into a clean, modern and very meaningful logo that I now proudly use everywhere. Super friendly team, very patient, and the result was beyond expectations!"</p>
+                    <p class="font-semibold">Ritika Shah</p>
+                    <p class="text-sm text-gray-600">Handmade Product Business</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="mb-4 text-primary">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"The designs they created for my Instagram page were not just beautiful — they were strategic. My engagement increased within a week! Apna Design understood my audience and created posts that actually got people to stop scrolling. Clean, modern and on point."</p>
+                    <p class="font-semibold">Yuvraj Malhotra</p>
+                    <p class="text-sm text-gray-600">Fitness Coach</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="mb-4 text-primary">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Thumbnails used to be my weakest point — plain and boring. But ever since I started getting my thumbnails from Apna Design, my click-through rate has noticeably improved. They know exactly how to grab attention with bold colors, clean fonts and smart layout."</p>
+                    <p class="font-semibold">Manya Arora</p>
+                    <p class="text-sm text-gray-600">YouTuber – Study Vlogs</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="mb-4 text-primary">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Working with Apna Design was such a smooth experience. They understood my ideas clearly and delivered posters and reels that looked polished and professional. I could see the care in every detail. Even though they’re a new agency, they work like pros!"</p>
+                    <p class="font-semibold">Nikhil Verma</p>
+                    <p class="text-sm text-gray-600">Food Startup Owner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Get in Touch</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">Ready to start your project? Contact us to discuss how we can
+                    help bring your vision to life.</p>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="w-full lg:w-1/2 bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="relative">
+                            <input type="text" id="name" name="name" placeholder=" "
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded focus:border-primary focus:outline-none text-gray-800">
+                            <label for="name" class="floating-label absolute left-4 top-3 text-gray-500 transition-all">Your Name</label>
+                        </div>
+                        <div class="relative">
+                            <input type="email" id="email" name="email" placeholder=" "
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded focus:border-primary focus:outline-none text-gray-800">
+                            <label for="email" class="floating-label absolute left-4 top-3 text-gray-500 transition-all">Your Email</label>
+                        </div>
+                        <div class="relative">
+                            <select id="service" name="service"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded focus:border-primary focus:outline-none text-gray-800 appearance-none pr-8">
+                                <option value="" disabled selected>Select a Service</option>
+                                <option value="logo">Logo Design</option>
+                                <option value="brand">Brand Identity</option>
+                                <option value="social">Social Media</option>
+                                <option value="print">Print Design</option>
+                                <option value="web">Web Design</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                <i class="ri-arrow-down-s-line text-gray-500"></i>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <textarea id="message" name="message" rows="5" placeholder=" "
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded focus:border-primary focus:outline-none text-gray-800"></textarea>
+                            <label for="message" class="floating-label absolute left-4 top-3 text-gray-500 transition-all">Your
+                                Message</label>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="relative inline-block w-10 h-6 mr-2">
+                                <input type="checkbox" id="consent" name="consent" class="opacity-0 w-0 h-0">
+                                <span
+                                    class="slider absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-300 rounded-full transition-all duration-300"></span>
+                            </div>
+                            <label for="consent" class="text-sm text-gray-700">I agree to receive communications from Apnaadesign</label>
+                        </div>
+                        <button type="submit"
+                            class="w-full px-6 py-3 bg-primary text-white font-medium transition-all duration-300 hover:bg-opacity-90 !rounded-button whitespace-nowrap">
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <!-- 🧠 JavaScript for sending data to Google Sheets -->
+                    <script>
+                        const form = document.getElementById('contact-form');
+                        form.addEventListener('submit', function (e) {
+                            e.preventDefault();
+
+                            const formData = new FormData(form);
+
+                            fetch('https://script.google.com/macros/s/AKfycbwweV8KhFB4jDCMEZsybmUMN6jP1GsUXKOmBSMJRCEcpVnwre7xnDl3AZSRHed_nKHh/exec', {
+                                method: 'POST',
+                                body: formData
+                            })
+                                .then(response => response.text())
+                                .then(result => {
+                                    alert("✅ Message sent successfully!");
+                                    form.reset();
+                                })
+                                .catch(error => {
+                                    console.error("Error!", error.message);
+                                    alert("❌ There was an error submitting the form.");
+                                });
+                        });
+                    </script>
+                      
+                    
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4">
+                                    <i class="ri-mail-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Email Us</h4>
+                                    <p class="text-gray-700">apnaadesign04@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4">
+                                    <i class="ri-map-pin-line text-primary"></i>
+                                </div>
+                            <h4 class="font-semibold">Visit Us</h4><br>
+                            <p class="text-gray-700">A-27, Second Floor, Hauz Khas Market,New Delhi, 110016</p>
+                            </div>
+                        <div class="mt-8">
+                            <h4 class="font-semibold mb-4">Connect With Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/apnaadesign_" target="_blank"
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-instagram-line"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-behance-line"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-dribbble-line"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-linkedin-line"></i>
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div class="h-64 bg-gray-200 relative">
+                                <img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Office Location Map"
+                                    class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="bg-primary text-white p-3 rounded-full animate-pulse">
+                                        <i class="ri-map-pin-fill ri-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <!-- WhatsApp Floating Button -->
+                        <a href="#"
+                            class="fixed bottom-6 right-6 w-14 h-14 flex items-center justify-center bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-colors z-50">
+                            <i class="ri-whatsapp-line ri-xl"></i>
+                        </a>
+                        </section>
+                        <!-- Footer -->
+                        <footer class="bg-gray-900 text-white py-12">
+                            <div class="container mx-auto px-6">
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                                    <div class="md:col-span-1">
+                                        <a href="#" class="block w-14 h-14 overflow-hidden rounded-full bg-white shadow-md ring-2 ring-white">
+                                            <img src="aapna-logo.jpg" alt="Apna Design Logo" class="w-full h-full object-cover">                        </a>
+                                          
+                                        <p class="text-gray-400 mb-6">Creating designs that speak volumes and leave lasting impressions.</p>
+                                        <div class="flex space-x-4">
+                                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                                <i class="ri-instagram-line"></i>
+                                            </a>
+                                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                                <i class="ri-behance-line"></i>
+                                            </a>
+                                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                                <i class="ri-dribbble-line"></i>
+                                            </a>
+                                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                                <i class="ri-linkedin-line"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-4">Services</h4>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Logo Design</a></li>
+                                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Brand Identity</a></li>
+                                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Social Media</a></li>
+                                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Print Design</a></li>
+                                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Web Design</a></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-4">Company</h4>
+                                        <ul class="space-y-2">
+                                            <li><a href="https://readdy.ai/home/84e06909-c25e-4da0-8992-a35f86fc7519/8883feb4-202e-43ff-bdb3-d6c8ec7e4b9e"
+                                                    data-readdy="true" class="text-gray-400 hover:text-white transition-colors">About Us</a>
+                                            </li>
+                                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Our Work</a></li>
+                                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-4">Subscribe</h4>
+                                        <p class="text-gray-400 mb-4">Stay updated with our latest news and projects.</p>
+                                        <form class="flex">
+                                            <input type="email" placeholder="Your email"
+                                                class="px-4 py-2 w-full bg-gray-800 border-none rounded-l text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                            <button type="submit"
+                                                class="px-4 py-2 bg-primary text-white rounded-r hover:bg-opacity-90 transition-colors !rounded-button whitespace-nowrap">Subscribe</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Apnaadesign. All rights reserved.</p>
+                                    <div class="flex space-x-6">
+                                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                        <!-- Scripts -->
+                        <script id="header-scroll-script">
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const header = document.getElementById('header');
+                                window.addEventListener('scroll', function () {
+                                    if (window.scrollY > 50) {
+                                        header.classList.add('header-scrolled');
+                                    } else {
+                                        header.classList.remove('header-scrolled');
+                                    }
+                                });
+                            });
+                        </script>
+                        <script id="mobile-menu-script">
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                                const mobileMenu = document.getElementById('mobile-menu');
+                                mobileMenuButton.addEventListener('click', function () {
+                                    mobileMenu.classList.toggle('hidden');
+                                    if (mobileMenu.classList.contains('hidden')) {
+                                        mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-2x"></i>';
+                                    } else {
+                                        mobileMenuButton.innerHTML = '<i class="ri-close-line ri-2x"></i>';
+                                    }
+                                });
+                                // Close mobile menu when clicking on a link
+                                const mobileLinks = mobileMenu.querySelectorAll('a');
+                                mobileLinks.forEach(link => {
+                                    link.addEventListener('click', function () {
+                                        mobileMenu.classList.add('hidden');
+                                        mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-2x"></i>';
+                                    });
+                                });
+                            });
+                        </script>
+                        <script id="smooth-scroll-script">
+                            document.addEventListener('DOMContentLoaded', function () {
+                                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                                    anchor.addEventListener('click', function (e) {
+                                        e.preventDefault();
+                                        const targetId = this.getAttribute('href');
+                                        const targetElement = document.querySelector(targetId);
+                                        if (targetElement) {
+                                            window.scrollTo({
+                                                top: targetElement.offsetTop - 80,
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                        <script id="hero-animation-script">
+                            document.addEventListener('DOMContentLoaded', function () {
+                                // Animate hero elements
+                                setTimeout(() => {
+                                    document.getElementById('hero-title').classList.add('opacity-100');
+                                    setTimeout(() => {
+                                        document.getElementById('hero-subtitle').classList.add('opacity-100');
+                                        setTimeout(() => {
+                                            document.getElementById('hero-cta').classList.add('opacity-100');
+                                        }, 300);
+                                    }, 300);
+                                }, 300);
+                            });
+                        </script>
+                        <script id="reviews-carousel-script">
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const slider = document.getElementById('reviews-slider');
+                                const prevBtn = document.getElementById('prev-review');
+                                const nextBtn = document.getElementById('next-review');
+                                const slides = document.querySelectorAll('.review-slide');
+                                let currentIndex = 0;
+                                const slidesToShow = window.innerWidth >= 768 ? 3 : 1;
+                                const maxIndex = slides.length - slidesToShow;
+                                function updateSlider() {
+                                    const slideWidth = 100 / slidesToShow;
+                                    slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                                }
+                                prevBtn.addEventListener('click', function () {
+                                    if (currentIndex > 0) {
+                                        currentIndex--;
+                                        updateSlider();
+                                    }
+                                });
+                                nextBtn.addEventListener('click', function () {
+                                    if (currentIndex < maxIndex) {
+                                        currentIndex++;
+                                        updateSlider();
+                                    }
+                                });
+                                // Auto slide
+                                let autoSlideInterval = setInterval(() => {
+                                    if (currentIndex < maxIndex) {
+                                        currentIndex++;
+                                    } else {
+                                        currentIndex = 0;
+                                    }
+                                    updateSlider();
+                                }, 5000);
+                                // Pause auto slide on hover
+                                const reviewsContainer = document.getElementById('reviews-container');
+                                reviewsContainer.addEventListener('mouseenter', () => {
+                                    clearInterval(autoSlideInterval);
+                                });
+                                reviewsContainer.addEventListener('mouseleave', () => {
+                                    autoSlideInterval = setInterval(() => {
+                                        if (currentIndex < maxIndex) {
+                                            currentIndex++;
+                                        } else {
+                                            currentIndex = 0;
+                                        }
+                                        updateSlider();
+                                    }, 5000);
+                                });
+                                // Update on window resize
+                                window.addEventListener('resize', function () {
+                                    const newSlidesToShow = window.innerWidth >= 768 ? 3 : 1;
+                                    if (newSlidesToShow !== slidesToShow) {
+                                        currentIndex = 0;
+                                        updateSlider();
+                                    }
+                                });
+                                // Initial setup
+                                updateSlider();
+                            });
+                        </script>
+                        <script id="form-animation-script">
+                            document.addEventListener('DOMContentLoaded', function () {
+                                // Custom checkbox/switch styling
+                                const checkbox = document.getElementById('consent');
+                                const slider = document.querySelector('.slider');
+                                checkbox.addEventListener('change', function () {
+                                    if (this.checked) {
+                                        slider.style.backgroundColor = '#0066FF';
+                                    } else {
+                                        slider.style.backgroundColor = '#ccc';
+                                    }
+                                });
+                                // Add the dot to the slider
+                                slider.innerHTML = '<span class="dot absolute h-4 w-4 left-1 bottom-1 bg-white rounded-full transition-all duration-300"></span>';
+                                const dot = document.querySelector('.dot');
+                                checkbox.addEventListener('change', function () {
+                                    if (this.checked) {
+                                        dot.style.transform = 'translateX(16px)';
+                                    } else {
+                                        dot.style.transform = 'translateX(0)';
+                                    }
+                                });
+                                // Form submission
+                                const contactForm = document.getElementById('contact-form');
+                                contactForm.addEventListener('submit', function (e) {
+                                    e.preventDefault();
+                                    // Form validation and submission logic would go here
+                                    alert('Thank you for your message! We will get back to you soon.');
+                                    contactForm.reset();
+                                });
+                            });
+                        </script>
+                        <script id="work-filter-script">
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const filterButtons = document.querySelectorAll('.work-filter-btn');
+                                filterButtons.forEach(button => {
+                                    button.addEventListener('click', function () {
+                                        // Remove active class from all buttons
+                                        filterButtons.forEach(btn => {
+                                            btn.classList.remove('bg-primary', 'text-white');
+                                            btn.classList.add('text-gray-700', 'hover:text-primary');
+                                        });
+                                        // Add active class to clicked button
+                                        this.classList.add('bg-primary', 'text-white');
+                                        this.classList.remove('text-gray-700', 'hover:text-primary');
+                                        // Filter logic would go here
+                                    });
+                                });
+                            });
+                        </script>
+                        </body>
+                        
+                        </html>
